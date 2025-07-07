@@ -5,12 +5,13 @@ import (
 	"log"
 	"os"
 
-	"github.com/IqbalBPH/golang-e-ticketing/config"
-	"github.com/IqbalBPH/golang-e-ticketing/models"
-	"github.com/IqbalBPH/golang-e-ticketing/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"github.com/terminator791/jwt-golang/config"
+	"github.com/terminator791/jwt-golang/models"
+	"github.com/terminator791/jwt-golang/routes"
 	"golang.org/x/crypto/bcrypt"
+	"gorm.io/gorm"
 )
 
 func main() {

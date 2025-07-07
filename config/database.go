@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/IqbalBPH/golang-e-ticketing/models"
 	"github.com/joho/godotenv"
+	"github.com/terminator791/jwt-golang/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
