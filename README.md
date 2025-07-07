@@ -1,4 +1,4 @@
-# Sistem E-Ticketing Transportasi Publik
+# MKP SKILL TEST
 
 ## 📥 Cara Instalasi
 
@@ -45,12 +45,6 @@ PORT=8080
 
 # JWT Configuration
 JWT_SECRET_KEY=ini-key-rahasia
-```
-
-### 5. Jalankan Migrasi Database
-
-```bash
-go run main.go
 ```
 
 Aplikasi akan secara otomatis membuat skema tabel dan user admin default:
