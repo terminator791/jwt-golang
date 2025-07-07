@@ -10,7 +10,6 @@
 
 - **Manajemen Terminal & Gate**
   - Membuat terminal baru
-  - Mengelola gate di terminal
 
 - **Keamanan**
   - Rate limiting untuk mencegah brute force attack
