@@ -32,8 +32,8 @@
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/IqbalBPH/golang-e-ticketing.git
-cd golang-e-ticketing
+git clone https://github.com/terminator791/jwt-golang.git
+cd jwt-golang
 ```
 
 ### 2. Instal Dependensi
@@ -65,7 +65,7 @@ DB_HOST=localhost
 DB_USER=postgres
 DB_PASSWORD=postgres
 DB_NAME=e_ticketing
-DB_PORT=5430
+DB_PORT=5430  #atau 5432
 
 # Server Configuration
 PORT=8080
@@ -131,7 +131,6 @@ Server akan berjalan di `http://localhost:8080`
 
 **Validasi Password**:
 - Minimal 6 karakter
-- Minimal 1 huruf besar
 - Minimal 1 huruf kecil
 - Minimal 1 angka
 
@@ -261,7 +260,7 @@ API dilindungi dari serangan brute force dengan rate limiting:
 
 Password harus memenuhi kriteria keamanan minimum:
 - Panjang minimal 6 karakter
-- Mengandung huruf besar dan kecil
+- Mengandung huruf kecil
 - Mengandung angka
 
 ### Perlindungan XSS
@@ -298,25 +297,5 @@ Proyek menggunakan pendekatan clean architecture dengan pemisahan layer:
 - Sanitasi input untuk mencegah XSS
 - Blacklist token untuk logout yang aman
 
-### Database
-- UUID untuk primary key tabel utama (mencegah collision di lingkungan terdistribusi)
-- Pemilihan tipe data yang tepat (decimal untuk nilai keuangan)
-- Penggunaan indeks untuk optimasi query
-- Hubungan relasional yang jelas antar entitas
 
-## 🤝 Kontribusi
-
-Silakan berkontribusi pada proyek ini dengan mengikuti langkah-langkah berikut:
-1. Fork repository
-2. Buat branch fitur baru (`git checkout -b feature/amazing-feature`)
-3. Commit perubahan (`git commit -m 'Menambahkan fitur amazing'`)
-4. Push ke branch (`git push origin feature/amazing-feature`)
-5. Buat Pull Request
-
-## 📃 Lisensi
-
-Proyek ini dilisensikan di bawah Lisensi MIT - lihat file LICENSE untuk detail.
-
----
-
-Dibuat dengan ❤️ oleh Tim E-Ticketing | © 2025 | [GitHub](https://github.com/IqbalBPH)
+Dibuat dengan ❤️ oleh iqbal (saya sendiri) | © 2025 | [GitHub](https://github.com/terminator791)
