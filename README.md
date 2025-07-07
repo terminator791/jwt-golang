@@ -1,30 +1,4 @@
-# README - Sistem E-Ticketing Transportasi Publik
-
-## 🚀 Fitur Utama
-
-- **Manajemen Pengguna**
-  - Registrasi pengguna baru
-  - Login dengan JWT authentication
-  - Melihat profil pengguna
-  - Logout (blacklist token)
-
-- **Manajemen Terminal & Gate**
-  - Membuat terminal baru
-
-- **Keamanan**
-  - Rate limiting untuk mencegah brute force attack
-  - Validasi password yang kuat
-  - Perlindungan terhadap XSS
-  - Token blacklisting untuk logout yang aman
-
-## 🛠️ Teknologi yang Digunakan
-
-- **Bahasa Pemrograman**: Go (Golang) v1.24
-- **Framework Web**: Gin Gonic
-- **ORM Database**: GORM
-- **Database**: PostgreSQL
-- **Autentikasi**: JWT (JSON Web Token)
-- **Enkripsi**: bcrypt
+# Sistem E-Ticketing Transportasi Publik
 
 ## 📥 Cara Instalasi
 
@@ -246,6 +220,33 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   }
 }
 ```
+
+## 🚀 Fitur Utama
+
+- **Manajemen Pengguna**
+  - Registrasi pengguna baru
+  - Login dengan JWT authentication
+  - Melihat profil pengguna
+  - Logout (blacklist token)
+
+- **Manajemen Terminal & Gate**
+  - Membuat terminal baru
+
+- **Keamanan**
+  - Rate limiting untuk mencegah brute force attack
+  - Validasi password yang kuat
+  - Perlindungan terhadap XSS
+  - Token blacklisting untuk logout yang aman
+
+## 🛠️ Teknologi yang Digunakan
+
+- **Bahasa Pemrograman**: Go (Golang) v1.24
+- **Framework Web**: Gin Gonic
+- **ORM Database**: GORM
+- **Database**: PostgreSQL
+- **Autentikasi**: JWT (JSON Web Token)
+- **Enkripsi**: bcrypt
+
 
 ## 🛡️ Fitur Keamanan
 
