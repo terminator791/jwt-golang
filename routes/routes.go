@@ -1,9 +1,9 @@
 package routes
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/terminator791/jwt-golang/controllers"
 	"github.com/terminator791/jwt-golang/middleware"
-	"github.com/gin-gonic/gin"
 )
 
 // SetupRoutes - Setup semua route aplikasi
@@ -19,13 +19,24 @@ func SetupRoutes(r *gin.Engine) {
 		auth := api.Group("/auth")
 		{
 			auth.POST("/login", authController.Login)
+			auth.POST("/register", authController.Register)
 		}
 
-		// Terminal Routes - Memerlukan autentikasi
-		terminal := api.Group("/terminal")
-		terminal.Use(middleware.AuthMiddleware()) // Middleware JWT untuk semua route di bawah
+		// Routes yang memerlukan autentikasi
+		protected := api.Group("")
+		protected.Use(middleware.AuthMiddleware())
 		{
-			terminal.POST("", terminalController.CreateTerminal)
+			// User profile
+			protected.GET("/user/profile", authController.GetUserProfile)
+
+			// Logout
+			protected.POST("/auth/logout", authController.Logout)
+
+			// Terminal routes
+			terminal := protected.Group("/terminal")
+			{
+				terminal.POST("/create", terminalController.CreateTerminal)
+			}
 		}
 	}
 }

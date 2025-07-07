@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/terminator791/jwt-golang/utils"
 	"github.com/gin-gonic/gin"
+	"github.com/terminator791/jwt-golang/utils"
 )
 
 // AuthMiddleware - Middleware untuk validasi token JWT
@@ -31,8 +31,20 @@ func AuthMiddleware() gin.HandlerFunc {
 			return
 		}
 
-		// Ambil token dan validasi
+		// Ambil token
 		tokenString := parts[1]
+
+		// Cek apakah token di blacklist
+		tokenBlacklist := utils.GetTokenBlacklist()
+		if tokenBlacklist.IsBlacklisted(tokenString) {
+			c.JSON(http.StatusUnauthorized, gin.H{
+				"error": "Token tidak valid atau sudah logout",
+			})
+			c.Abort()
+			return
+		}
+
+		// Validasi token
 		claims, err := utils.ValidateJWT(tokenString)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{
@@ -46,6 +58,10 @@ func AuthMiddleware() gin.HandlerFunc {
 		c.Set("userID", claims.UserID)
 		c.Set("email", claims.Email)
 		c.Set("userType", claims.UserType)
+
+		// Simpan token string untuk digunakan pada saat logout
+		c.Set("tokenString", tokenString)
+
 		c.Next()
 	}
 }
