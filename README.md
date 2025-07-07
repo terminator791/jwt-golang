@@ -1,25 +1,5 @@
 # README - Sistem E-Ticketing Transportasi Publik
 
-## 📌 Deskripsi Proyek
-
-Sistem E-Ticketing Transportasi Publik adalah aplikasi backend berbasis Golang yang dirancang untuk mengelola sistem tiket elektronik pada jaringan transportasi publik. Aplikasi ini mendukung operasi 24 jam dengan fitur offline capability, sehingga tetap dapat beroperasi meskipun koneksi internet terputus.
-
-Sistem ini menangani:
-- Manajemen kartu prepaid untuk pengguna
-- Transaksi check-in dan check-out di terminal
-- Perhitungan tarif berdasarkan terminal asal dan tujuan
-- Sinkronisasi data antara terminal dan server pusat
-- Manajemen pengguna dan autentikasi dengan JWT
-
-## 🏗️ Arsitektur Sistem
-
-Sistem E-Ticketing menggunakan arsitektur hybrid yang menggabungkan:
-1. **Edge Computing** - Server lokal di setiap terminal
-2. **Centralized Microservices** - Layanan terpusat untuk manajemen data
-3. **API Gateway** - Entry point untuk interaksi dengan sistem
-4. **Database PostgreSQL** - Penyimpanan data persisten
-5. **JWT Authentication** - Sistem otentikasi berbasis token
-
 ## 🚀 Fitur Utama
 
 - **Manajemen Pengguna**
@@ -38,24 +18,14 @@ Sistem E-Ticketing menggunakan arsitektur hybrid yang menggabungkan:
   - Perlindungan terhadap XSS
   - Token blacklisting untuk logout yang aman
 
-- **Offline Capability**
-  - Operasi check-in/check-out tetap berjalan saat offline
-  - Sinkronisasi otomatis saat koneksi tersedia kembali
-
 ## 🛠️ Teknologi yang Digunakan
 
-- **Bahasa Pemrograman**: Go (Golang) v1.21+
+- **Bahasa Pemrograman**: Go (Golang) v1.24
 - **Framework Web**: Gin Gonic
 - **ORM Database**: GORM
 - **Database**: PostgreSQL
 - **Autentikasi**: JWT (JSON Web Token)
 - **Enkripsi**: bcrypt
-
-## 📋 Persyaratan Sistem
-
-- Go (Golang) versi 1.21 atau lebih baru
-- PostgreSQL versi 13 atau lebih baru
-- Terminal/Command Line dengan Git
 
 ## 📥 Cara Instalasi
 
@@ -77,14 +47,12 @@ go mod download
 Buat database PostgreSQL baru untuk aplikasi:
 
 ```bash
-# Login ke PostgreSQL
-psql -U postgres
+# pastikan sudah install docker, masuk ke root folder dan jalankan
+docker compose up -d
+#atau
+docker-compose up -d
 
-# Buat database baru
-CREATE DATABASE e_ticketing;
-
-# Keluar dari psql
-\q
+#postgre akan run di port 5430 atau bisa ubah ke 5432 (deafult)
 ```
 
 ### 4. Konfigurasi Lingkungan
@@ -95,15 +63,15 @@ Buat file `.env` di root directory:
 # Database Configuration
 DB_HOST=localhost
 DB_USER=postgres
-DB_PASSWORD=your_password_here
+DB_PASSWORD=postgres
 DB_NAME=e_ticketing
-DB_PORT=5432
+DB_PORT=5430
 
 # Server Configuration
 PORT=8080
 
 # JWT Configuration
-JWT_SECRET_KEY=rahasia_jwt_yang_sangat_aman_dan_panjang
+JWT_SECRET_KEY=ini-key-rahasia
 ```
 
 ### 5. Jalankan Migrasi Database
@@ -119,19 +87,10 @@ Email: admin@e-ticketing.com
 Password: admin123
 ```
 
-> ⚠️ **Penting**: Segera ubah password admin default setelah instalasi!
-
 ## 🚆 Cara Menjalankan Aplikasi
 
 ```bash
 go run main.go
-```
-
-Atau build dan jalankan executable:
-
-```bash
-go build -o e-ticketing
-./e-ticketing
 ```
 
 Server akan berjalan di `http://localhost:8080`
