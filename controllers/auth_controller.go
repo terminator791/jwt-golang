@@ -47,48 +47,7 @@ type RegisterRequest struct {
 	UserType    string    `json:"user_type"`
 }
 
-// Login - Handler untuk endpoint login
-func (ctrl *authController) Login(c *gin.Context) {
-	var request LoginRequest
-
-	// Binding request body ke struct
-	if err := c.ShouldBindJSON(&request); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"status":  "error",
-			"message": "Format request tidak valid",
-			"errors":  err.Error(),
-		})
-		return
-	}
-
-	// Panggil service untuk login
-	token, user, err := ctrl.authService.Login(request.Email, request.Password)
-	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{
-			"status":  "error",
-			"message": "Gagal login",
-			"error":   err.Error(),
-		})
-		return
-	}
-
-	// Response sukses
-	c.JSON(http.StatusOK, gin.H{
-		"status":  "success",
-		"message": "Login berhasil",
-		"data": gin.H{
-			"token": token,
-			"user": gin.H{
-				"user_id":   user.UserID,
-				"full_name": user.FullName,
-				"email":     user.Email,
-				"user_type": user.UserType,
-			},
-		},
-	})
-}
-
-// Register - Handler untuk endpoint register
+// Perbarui method Register untuk menambahkan validasi password dan sanitasi input
 func (ctrl *authController) Register(c *gin.Context) {
 	var request RegisterRequest
 
@@ -102,11 +61,28 @@ func (ctrl *authController) Register(c *gin.Context) {
 		return
 	}
 
-	// Konversi request ke model User
+	// Validasi kekuatan password
+	if err := utils.ValidatePasswordStrength(request.Password); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status":  "error",
+			"message": "Password terlalu lemah",
+			"error":   err.Error(),
+		})
+		return
+	}
+
+	// Sanitasi input untuk mencegah XSS
+	sanitizedFullName, sanitizedEmail, sanitizedPhone := utils.SanitizeUserInput(
+		request.FullName,
+		request.Email,
+		request.Phone,
+	)
+
+	// Konversi request ke model User dengan data yang sudah disanitasi
 	user := models.User{
-		FullName:    request.FullName,
-		Email:       request.Email,
-		Phone:       request.Phone,
+		FullName:    sanitizedFullName,
+		Email:       sanitizedEmail,
+		Phone:       sanitizedPhone,
 		DateOfBirth: request.DateOfBirth,
 	}
 
@@ -145,6 +121,50 @@ func (ctrl *authController) Register(c *gin.Context) {
 			"email":     registeredUser.Email,
 			"phone":     registeredUser.Phone,
 			"user_type": registeredUser.UserType,
+		},
+	})
+}
+
+// Perbarui method Login untuk sanitasi input
+func (ctrl *authController) Login(c *gin.Context) {
+	var request LoginRequest
+
+	// Binding request body ke struct
+	if err := c.ShouldBindJSON(&request); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status":  "error",
+			"message": "Format request tidak valid",
+			"errors":  err.Error(),
+		})
+		return
+	}
+
+	// Sanitasi input email
+	sanitizedEmail := utils.SanitizeInput(request.Email)
+
+	// Panggil service untuk login
+	token, user, err := ctrl.authService.Login(sanitizedEmail, request.Password)
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"status":  "error",
+			"message": "Gagal login",
+			"error":   err.Error(),
+		})
+		return
+	}
+
+	// Response sukses
+	c.JSON(http.StatusOK, gin.H{
+		"status":  "success",
+		"message": "Login berhasil",
+		"data": gin.H{
+			"token": token,
+			"user": gin.H{
+				"user_id":   user.UserID,
+				"full_name": user.FullName,
+				"email":     user.Email,
+				"user_type": user.UserType,
+			},
 		},
 	})
 }

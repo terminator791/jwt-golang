@@ -11,6 +11,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/joho/godotenv"
 	"github.com/terminator791/jwt-golang/config"
+	"github.com/terminator791/jwt-golang/middleware"
 	"github.com/terminator791/jwt-golang/models"
 	"github.com/terminator791/jwt-golang/routes"
 	"golang.org/x/crypto/bcrypt"
@@ -37,6 +38,7 @@ func main() {
 	// Middleware global
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	r.Use(middleware.XSSProtection())
 
 	// Setup routes
 	routes.SetupRoutes(r)

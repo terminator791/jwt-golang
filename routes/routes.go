@@ -17,6 +17,7 @@ func SetupRoutes(r *gin.Engine) {
 	{
 		// Auth Routes - Tidak memerlukan autentikasi
 		auth := api.Group("/auth")
+		auth.Use(middleware.RateLimitAuth())
 		{
 			auth.POST("/login", authController.Login)
 			auth.POST("/register", authController.Register)
