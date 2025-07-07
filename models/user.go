@@ -7,6 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// UserType adalah enum untuk tipe user
 type UserType string
 
 const (
@@ -15,6 +16,7 @@ const (
 	UserTypeStaff    UserType = "STAFF"
 )
 
+// User merepresentasikan entitas pengguna sistem e-ticketing
 type User struct {
 	UserID      uuid.UUID `gorm:"type:uuid;primary_key;default:gen_random_uuid()" json:"user_id"`
 	FullName    string    `gorm:"type:varchar(100);not null" json:"full_name"`

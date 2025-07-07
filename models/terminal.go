@@ -4,6 +4,7 @@ import (
 	"time"
 )
 
+// Terminal merepresentasikan terminal fisik dalam sistem transportasi
 type Terminal struct {
 	TerminalID   int       `gorm:"primaryKey;autoIncrement" json:"terminal_id"`
 	TerminalName string    `gorm:"type:varchar(100);not null" json:"terminal_name"`

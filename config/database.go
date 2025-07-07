@@ -38,11 +38,38 @@ func InitDB() {
 
 	log.Println("Database connection established")
 
-	// Auto-migrate model
-	err = db.AutoMigrate(&models.User{}, &models.Terminal{})
+	// Drop existing tables
+	// err = db.Exec("DROP TABLE IF EXISTS sync_logs, card_balance_logs, top_ups, transactions, gates, cards, fare_matrices, terminals, users CASCADE").Error
+	// if err != nil {
+	// 	log.Printf("Warning: Failed to drop existing tables: %v", err)
+	// }
+
+	// Migrate all models without foreign key constraints first
+	log.Println("Creating tables without foreign key constraints...")
+	err = db.Set("gorm:association_autocreate", false).Set("gorm:association_autoupdate", false).AutoMigrate(
+		&models.User{},
+		&models.Terminal{},
+		&models.FareMatrix{},
+		&models.Card{},
+		&models.Gate{},
+		&models.Transaction{},
+		&models.TopUp{},
+		&models.CardBalanceLog{},
+		&models.SyncLog{},
+	)
 	if err != nil {
-		log.Fatalf("Failed to migrate database: %v", err)
+		log.Fatalf("Failed to migrate models: %v", err)
 	}
+
+	// Create foreign key constraints manually
+	log.Println("Creating foreign key constraints...")
+	err = models.CreateForeignKeys(db)
+	if err != nil {
+		log.Printf("Warning: Failed to create some foreign keys: %v", err)
+		// Don't fail on foreign key errors, continue
+	}
+
+	log.Println("Database migration completed successfully")
 
 	DB = db
 }
