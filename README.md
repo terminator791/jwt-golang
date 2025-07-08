@@ -28,7 +28,7 @@ docker-compose up -d
 #postgre akan run di port 5430 atau bisa ubah ke 5432 (deafult)
 ```
 
-### 4. Konfigurasi Lingkungan
+### 4. Konfigurasi Environment
 
 Buat file `.env` di root directory:
 
