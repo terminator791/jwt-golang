@@ -17,7 +17,7 @@ go mod download
 
 ### 3. Siapkan Database
 
-Buat database PostgreSQL baru untuk aplikasi:
+Buat database PostgreSQL baru untuk aplikasi (di repo ini sudah disediakan docker-compose):
 
 ```bash
 # pastikan sudah install docker, masuk ke root folder dan jalankan
@@ -177,7 +177,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 #### 1. Buat Terminal - Membuat Terminal Baru
 
-**Endpoint**: `POST /api/terminal`
+**Endpoint**: `POST /api/terminal/create`
 
 **Header**:
 ```
