@@ -214,6 +214,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   }
 }
 ```
+## System Design Utama
+![System Design](System Design E-Ticketing Transportasi Publik.png)
+
+## Schema Database
+![Schema Database](schema-database.png)
 
 ## 🚀 Fitur Utama
 
