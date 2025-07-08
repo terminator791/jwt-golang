@@ -215,7 +215,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 }
 ```
 ## System Design Utama
-![System Design](System Design E-Ticketing Transportasi Publik.png)
+![System Design](System%20Design%20E-Ticketing%20Transportasi%20Publik.png)
 
 ## Schema Database
 ![Schema Database](schema-database.png)
