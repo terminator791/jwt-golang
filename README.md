@@ -15,7 +15,7 @@ cd jwt-golang
 go mod download
 ```
 
-### 3. Siapkan Database
+### 3. Siapkan Database (Migrasi otomatis menggunakan GORM) tidak memerlukan script postgre
 
 Buat database PostgreSQL baru untuk aplikasi (di repo ini sudah disediakan docker-compose):
 
