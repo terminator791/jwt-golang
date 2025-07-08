@@ -18,10 +18,8 @@ type AuthService interface {
 	Login(email, password string) (string, *models.User, error)
 	Register(user models.User, password string) (*models.User, error)
 	GetUserByID(userID uuid.UUID) (*models.User, error)
-	// Kita tidak perlu method Logout karena JWT stateless
 }
 
-// authService - Implementasi AuthService
 type authService struct{}
 
 // NewAuthService - Membuat instance baru AuthService
@@ -29,7 +27,7 @@ func NewAuthService() AuthService {
 	return &authService{}
 }
 
-// Login - Metode untuk login user
+// Metode untuk login user
 func (s *authService) Login(email, password string) (string, *models.User, error) {
 	var user models.User
 	db := config.GetDB()
@@ -53,7 +51,7 @@ func (s *authService) Login(email, password string) (string, *models.User, error
 	return token, &user, nil
 }
 
-// Register - Metode untuk mendaftarkan user baru
+// Metode untuk register user baru
 func (s *authService) Register(user models.User, password string) (*models.User, error) {
 	db := config.GetDB()
 

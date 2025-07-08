@@ -3,9 +3,9 @@ package controllers
 import (
 	"net/http"
 
+	"github.com/gin-gonic/gin"
 	"github.com/terminator791/jwt-golang/models"
 	"github.com/terminator791/jwt-golang/services"
-	"github.com/gin-gonic/gin"
 )
 
 // TerminalController - Interface untuk controller terminal

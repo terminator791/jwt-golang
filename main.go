@@ -49,7 +49,7 @@ func main() {
 		port = "8080" // default port
 	}
 
-	// Jalankan server
+	// Run server
 	log.Printf("Server running on port %s", port)
 	if err := r.Run(fmt.Sprintf(":%s", port)); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
@@ -65,14 +65,14 @@ func seedAdminUser(db *gorm.DB) {
 	if count == 0 {
 		log.Println("Database kosong. Membuat akun admin default...")
 
-		// Hash password untuk admin
-		password := "admin123" // Password default admin
+		// Hash password
+		password := "admin123" // Password default
 		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 		if err != nil {
 			log.Fatal("Gagal melakukan hash password untuk akun admin")
 		}
 
-		// Buat admin dengan data lengkap
+		// Buat admin
 		admin := models.User{
 			UserID:      uuid.New(),
 			FullName:    "Admin Sistem E-Ticketing",
@@ -89,9 +89,9 @@ func seedAdminUser(db *gorm.DB) {
 		if result.Error != nil {
 			log.Printf("Gagal membuat akun admin default: %v", result.Error)
 		} else {
-			log.Println("✅ Akun admin berhasil dibuat dengan detail:")
-			log.Println("   Email   : admin@e-ticketing.com")
-			log.Println("   Password: admin123")
+			log.Println("Akun admin berhasil dibuat dengan detail:")
+			log.Println("Email   : admin@e-ticketing.com")
+			log.Println("Password: admin123")
 		}
 	} else {
 		log.Println("Database sudah berisi data. Melewati pembuatan akun admin default.")

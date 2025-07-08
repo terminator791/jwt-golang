@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// CardStatus adalah enum untuk status kartu
+// enum untuk status kartu
 type CardStatus string
 
 const (

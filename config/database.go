@@ -13,7 +13,7 @@ import (
 
 var DB *gorm.DB
 
-// InitDB - Inisialisasi koneksi database
+// Inisialisasi koneksi database
 func InitDB() {
 	err := godotenv.Load()
 	if err != nil {
@@ -38,13 +38,13 @@ func InitDB() {
 
 	log.Println("Database connection established")
 
-	// Drop existing tables
+	// Drop
 	// err = db.Exec("DROP TABLE IF EXISTS sync_logs, card_balance_logs, top_ups, transactions, gates, cards, fare_matrices, terminals, users CASCADE").Error
 	// if err != nil {
 	// 	log.Printf("Warning: Failed to drop existing tables: %v", err)
 	// }
 
-	// Migrate all models without foreign key constraints first
+	// Migrasi semua model tanpa foreign key constraints
 	log.Println("Creating tables without foreign key constraints...")
 	err = db.Set("gorm:association_autocreate", false).Set("gorm:association_autoupdate", false).AutoMigrate(
 		&models.User{},
@@ -61,12 +61,11 @@ func InitDB() {
 		log.Fatalf("Failed to migrate models: %v", err)
 	}
 
-	// Create foreign key constraints manually
+	// Setup relasi antar tabel
 	log.Println("Creating foreign key constraints...")
 	err = models.CreateForeignKeys(db)
 	if err != nil {
 		log.Printf("Warning: Failed to create some foreign keys: %v", err)
-		// Don't fail on foreign key errors, continue
 	}
 
 	log.Println("Database migration completed successfully")
@@ -74,7 +73,7 @@ func InitDB() {
 	DB = db
 }
 
-// GetDB - Mendapatkan instance DB
+// GetDB
 func GetDB() *gorm.DB {
 	return DB
 }

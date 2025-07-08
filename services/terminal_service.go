@@ -12,10 +12,10 @@ type TerminalService interface {
 	CreateTerminal(terminal models.Terminal) (*models.Terminal, error)
 }
 
-// terminalService - Implementasi TerminalService
+// Implementasi TerminalService
 type terminalService struct{}
 
-// NewTerminalService - Membuat instance baru TerminalService
+// Membuat instance baru TerminalService
 func NewTerminalService() TerminalService {
 	return &terminalService{}
 }
@@ -24,7 +24,7 @@ func NewTerminalService() TerminalService {
 func (s *terminalService) CreateTerminal(terminal models.Terminal) (*models.Terminal, error) {
 	db := config.GetDB()
 
-	// Cek apakah terminal code sudah digunakan
+	// Cek apakah terminal code sudah digunakan (agar tidak duplikat)
 	var existingTerminal models.Terminal
 	if err := db.Where("terminal_code = ?", terminal.TerminalCode).First(&existingTerminal).Error; err == nil {
 		return nil, errors.New("kode terminal sudah digunakan")

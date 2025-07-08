@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// UserType adalah enum untuk tipe user
+// enum untuk tipe user
 type UserType string
 
 const (

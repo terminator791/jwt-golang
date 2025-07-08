@@ -10,7 +10,7 @@ import (
 	"github.com/terminator791/jwt-golang/models"
 )
 
-// JWTClaim - Payload JWT
+// Payload JWT
 type JWTClaim struct {
 	UserID   uuid.UUID       `json:"user_id"`
 	Email    string          `json:"email"`
@@ -20,8 +20,8 @@ type JWTClaim struct {
 
 // GenerateJWT - Membuat token JWT baru
 func GenerateJWT(user models.User) (string, error) {
-	// Set expiration time (24 jam)
-	expirationTime := time.Now().Add(24 * time.Hour)
+	// Set expiration time (12 jam)
+	expirationTime := time.Now().Add(12 * time.Hour)
 
 	// Buat payload JWT
 	claims := &JWTClaim{
@@ -34,13 +34,13 @@ func GenerateJWT(user models.User) (string, error) {
 		},
 	}
 
-	// Buat token dengan signing method HS256
+	// Buat tokenW
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	// Ambil secret key dari environment variable
 	secretKey := os.Getenv("JWT_SECRET_KEY")
 	if secretKey == "" {
-		secretKey = "default_secret_key_for_development" // Default key untuk development
+		secretKey = "default_secret_key_for_development"
 	}
 
 	// Tanda tangani token
@@ -57,7 +57,7 @@ func ValidateJWT(tokenString string) (*JWTClaim, error) {
 	// Ambil secret key dari environment variable
 	secretKey := os.Getenv("JWT_SECRET_KEY")
 	if secretKey == "" {
-		secretKey = "default_secret_key_for_development" // Default key untuk development
+		secretKey = "default_secret_key_for_development" 
 	}
 
 	// Parse token JWT

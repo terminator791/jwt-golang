@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// TransactionStatus adalah enum untuk status transaksi
+// enum untuk status transaksi
 type TransactionStatus string
 
 const (
@@ -17,7 +17,7 @@ const (
 	TransactionStatusCancelled  TransactionStatus = "CANCELLED"
 )
 
-// TransactionType adalah enum untuk tipe transaksi
+// enum untuk tipe transaksi
 type TransactionType string
 
 const (

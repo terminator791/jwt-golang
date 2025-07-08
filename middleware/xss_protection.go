@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// XSSProtection adalah middleware untuk mencegah XSS attack
+// middleware untuk mencegah XSS attack
 func XSSProtection() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Hanya proses request dengan content-type application/json

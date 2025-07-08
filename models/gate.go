@@ -16,7 +16,7 @@ const (
 	GateTypeBoth  GateType = "BOTH"
 )
 
-// GateStatus adalah enum untuk status gate
+// enum untuk status gate
 type GateStatus string
 
 const (

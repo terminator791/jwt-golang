@@ -14,7 +14,7 @@ type RateLimiter struct {
 	ipMap map[string][]time.Time
 	// mutex untuk thread safety
 	mu sync.RWMutex
-	// durasi window untuk rate limiting (misalnya 1 menit)
+	// durasi window untuk rate limiting
 	windowSize time.Duration
 	// maksimum request dalam 1 window
 	maxRequests int
@@ -98,14 +98,12 @@ func RateLimitMiddleware(windowSize time.Duration, maxRequests int) gin.HandlerF
 	}
 }
 
-// RateLimitAuth membuat middleware khusus untuk endpoint autentikasi
-// dengan batasan yang lebih ketat (5 request per menit)
+// (5 request per menit)
 func RateLimitAuth() gin.HandlerFunc {
 	return RateLimitMiddleware(time.Minute, 5)
 }
 
-// RateLimitGeneral membuat middleware untuk endpoint umum
-// dengan batasan yang lebih longgar (30 request per menit)
+// (30 request per menit)
 func RateLimitGeneral() gin.HandlerFunc {
 	return RateLimitMiddleware(time.Minute, 30)
 }

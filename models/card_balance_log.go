@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// ChangeType adalah enum untuk tipe perubahan saldo
+// enum untuk tipe perubahan saldo
 type ChangeType string
 
 const (

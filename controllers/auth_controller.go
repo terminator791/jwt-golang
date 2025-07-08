@@ -11,7 +11,7 @@ import (
 	"github.com/terminator791/jwt-golang/utils"
 )
 
-// AuthController - Interface untuk controller autentikasi
+// Interface untuk controller autentikasi
 type AuthController interface {
 	Login(c *gin.Context)
 	Register(c *gin.Context)
@@ -19,12 +19,12 @@ type AuthController interface {
 	Logout(c *gin.Context)
 }
 
-// authController - Implementasi AuthController
+// Implementasi AuthController
 type authController struct {
 	authService services.AuthService
 }
 
-// NewAuthController - Membuat instance baru AuthController
+// Membuat instance baru AuthController
 func NewAuthController() AuthController {
 	return &authController{
 		authService: services.NewAuthService(),
@@ -47,7 +47,7 @@ type RegisterRequest struct {
 	UserType    string    `json:"user_type"`
 }
 
-// Perbarui method Register untuk menambahkan validasi password dan sanitasi input
+// Register - Handler untuk registrasi user baru
 func (ctrl *authController) Register(c *gin.Context) {
 	var request RegisterRequest
 
@@ -218,7 +218,6 @@ func (ctrl *authController) GetUserProfile(c *gin.Context) {
 	})
 }
 
-// Logout - Handler untuk logout (minimal implementation)
 // Logout - Handler untuk logout dengan blacklist token
 func (ctrl *authController) Logout(c *gin.Context) {
 	// Ambil token dari context

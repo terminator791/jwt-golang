@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// SyncType adalah enum untuk tipe sinkronisasi
+// enum untuk tipe sinkronisasi
 type SyncType string
 
 const (
@@ -20,7 +20,7 @@ const (
 	SyncTypeConfiguration SyncType = "CONFIGURATION"
 )
 
-// SyncStatus adalah enum untuk status sinkronisasi
+// enum untuk status sinkronisasi
 type SyncStatus string
 
 const (
@@ -31,7 +31,6 @@ const (
 	SyncStatusRetrying   SyncStatus = "RETRYING"
 )
 
-// JSONData adalah tipe untuk menyimpan data JSON di database
 type JSONData map[string]interface{}
 
 // Value mengkonversi JSONData ke format yang dapat disimpan di database

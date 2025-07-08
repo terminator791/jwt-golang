@@ -8,7 +8,7 @@ import (
 
 // PasswordStrengthValidator memvalidasi kekuatan password
 func ValidatePasswordStrength(password string) error {
-	// Cek panjang minimum (sudah ada di binding, tapi ditambahkan lagi untuk lengkapnya)
+	// Cek panjang minimum
 	if len(password) < 6 {
 		return errors.New("password harus minimal 6 karakter")
 	}
@@ -39,8 +39,7 @@ func ValidatePasswordStrength(password string) error {
 
 // SanitizeInput membersihkan input dari potensi XSS
 func SanitizeInput(input string) string {
-	// Menghapus tag HTML/JavaScript yang berbahaya
-	// Ini adalah implementasi sederhana, untuk produksi gunakan library yang lebih robust
+	// Membuat fungsi untuk menghapus tag yang berbahaya
 	stripTagsRegex := regexp.MustCompile("<[^>]*>")
 	return stripTagsRegex.ReplaceAllString(input, "")
 }

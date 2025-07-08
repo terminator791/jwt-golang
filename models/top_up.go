@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// PaymentMethod adalah enum untuk metode pembayaran
+// enum untuk metode pembayaran
 type PaymentMethod string
 
 const (
@@ -18,7 +18,7 @@ const (
 	PaymentMethodTransfer   PaymentMethod = "BANK_TRANSFER"
 )
 
-// TopUpStatus adalah enum untuk status top up
+// enum untuk status top up
 type TopUpStatus string
 
 const (

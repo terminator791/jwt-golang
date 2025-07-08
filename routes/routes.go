@@ -12,10 +12,8 @@ func SetupRoutes(r *gin.Engine) {
 	authController := controllers.NewAuthController()
 	terminalController := controllers.NewTerminalController()
 
-	// API Group
 	api := r.Group("/api")
 	{
-		// Auth Routes - Tidak memerlukan autentikasi
 		auth := api.Group("/auth")
 		auth.Use(middleware.RateLimitAuth())
 		{
@@ -23,17 +21,14 @@ func SetupRoutes(r *gin.Engine) {
 			auth.POST("/register", authController.Register)
 		}
 
-		// Routes yang memerlukan autentikasi
+		// Routes yang memerlukan autentikasi (middleware)
 		protected := api.Group("")
 		protected.Use(middleware.AuthMiddleware())
 		{
-			// User profile
 			protected.GET("/user/profile", authController.GetUserProfile)
 
-			// Logout
 			protected.POST("/auth/logout", authController.Logout)
 
-			// Terminal routes
 			terminal := protected.Group("/terminal")
 			{
 				terminal.POST("/create", terminalController.CreateTerminal)
