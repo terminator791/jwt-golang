@@ -13,7 +13,6 @@ type FareMatrix struct {
 	FromTerminalID     int       `gorm:"index;not null" json:"from_terminal_id"`
 	ToTerminalID       int       `gorm:"index;not null" json:"to_terminal_id"`
 	BaseFare           float64   `gorm:"type:decimal(10,2);not null" json:"base_fare"`
-	PeakHourMultiplier float64   `gorm:"type:decimal(4,2);default:1.0" json:"peak_hour_multiplier"`
 	EffectiveFrom      time.Time `gorm:"not null" json:"effective_from"`
 	EffectiveUntil     time.Time `json:"effective_until"`
 	IsActive           bool      `gorm:"not null;default:true" json:"is_active"`

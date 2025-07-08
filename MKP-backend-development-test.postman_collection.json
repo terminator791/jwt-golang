@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM2MWM1OWMtM2U5MS00MmUwLTk5ZmMtOGM3NzQ0OTNkZjQ5IiwiZW1haWwiOiJhZG1pbkBlLXRpY2tldGluZy5jb20iLCJ1c2VyX3R5cGUiOiJBRE1JTiIsImV4cCI6MTc1MTk5MjAxNywiaWF0IjoxNzUxOTA1NjE3fQ.ohjhtzLZJTwKmPARe0PrPDk0G75x-IATW15n7-1N2UM",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZDcyZmNmYTctZWQyMy00YzI2LTlhZTgtN2NhZDRiYzY5YjcyIiwiZW1haWwiOiJhZG1pbkBlLXRpY2tldGluZy5jb20iLCJ1c2VyX3R5cGUiOiJBRE1JTiIsImV4cCI6MTc1MTk3OTQ4MywiaWF0IjoxNzUxOTM2MjgzfQ.Q2Wyawr7ydf7eS1l7tGmKC5JArqHBs5_uKyetAVFSEA",
 									"type": "string"
 								}
 							]
@@ -53,7 +53,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"Budi Santoso\",\r\n    \"email\": \"budi@example.com\",\r\n    \"password\": \"rahasia123\",\r\n    \"phone\": \"081234567890\",\r\n    \"date_of_birth\": \"1990-01-15T00:00:00Z\"\r\n}",
+							"raw": "{\r\n    \"full_name\": \"Budi Santoso\",\r\n    \"email\": \"budi@example.com\",\r\n    \"password\": \"rahasia123\",\r\n    \"phone\": \"0812345678901\",\r\n    \"date_of_birth\": \"1990-01-15T00:00:00Z\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -153,7 +153,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM2MWM1OWMtM2U5MS00MmUwLTk5ZmMtOGM3NzQ0OTNkZjQ5IiwiZW1haWwiOiJhZG1pbkBlLXRpY2tldGluZy5jb20iLCJ1c2VyX3R5cGUiOiJBRE1JTiIsImV4cCI6MTc1MTk4NjY4NiwiaWF0IjoxNzUxOTAwMjg2fQ.D6Ql2cjKBIoCuW0-BZNrNH-bCSt-8C0UEs3zc6c2gWY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZDcyZmNmYTctZWQyMy00YzI2LTlhZTgtN2NhZDRiYzY5YjcyIiwiZW1haWwiOiJhZG1pbkBlLXRpY2tldGluZy5jb20iLCJ1c2VyX3R5cGUiOiJBRE1JTiIsImV4cCI6MTc1MTk3OTQ4MywiaWF0IjoxNzUxOTM2MjgzfQ.Q2Wyawr7ydf7eS1l7tGmKC5JArqHBs5_uKyetAVFSEA",
 							"type": "string"
 						}
 					]
@@ -162,7 +162,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"terminal_name\": \"Terminal Pusat\",\r\n    \"terminal_code\": \"TPT01\",\r\n    \"location\": \"Jakarta Pusat\",\r\n    \"latitude\": -6.175110,\r\n    \"longitude\": 106.865036,\r\n    \"is_active\": true\r\n}",
+					"raw": "{\r\n    \"terminal_name\": \"Terminal Pusat\",\r\n    \"terminal_code\": \"TPT02\",\r\n    \"location\": \"Jakarta Pusat\",\r\n    \"latitude\": -6.175110,\r\n    \"longitude\": 106.865036,\r\n    \"is_active\": true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
